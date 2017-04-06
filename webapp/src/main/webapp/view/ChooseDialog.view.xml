@@ -1,0 +1,33 @@
+<mvc:View
+        controllerName="com.rach.controller.ChooseDialog"
+        xmlns="sap.m"
+        xmlns:mvc="sap.ui.core.mvc">
+
+    <Dialog id="ChooseDialog" title="{i18n>ChooseDialogTitle}">
+        <VBox class="sapUiSmallMargin"
+              alignItems="Center"
+              justifyContent="SpaceBetween"
+              enableScrolling="true"
+              width="31em">
+            <List mode="SingleSelectMaster"
+                  selectionChange="onSelect"
+                  growing="true"
+                  items="{/images}"
+                  width="29em">
+                <StandardListItem title="{imageName}"
+                                  icon="{imagePath}"
+                                  iconDensityAware="false"
+                                  iconInset="false"/>
+            </List>
+
+        </VBox>
+
+        <beginButton>
+            <Button id="btnOK" text="OK" press="onOKPress" enabled="{/okEnabled}"/>
+        </beginButton>
+        <endButton>
+            <Button id="btnCancel" text="Cancel" press="onCancelPress"/>
+        </endButton>
+    </Dialog>
+
+</mvc:View>
