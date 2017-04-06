@@ -1,8 +1,16 @@
 <mvc:View
         controllerName="com.rach.controller.shell"
         xmlns="sap.m"
-        xmlns:mvc="sap.ui.core.mvc"
-        displayBlock="true">
-    <Label text="{i18n>HelloWorld}"/>
+        xmlns:mvc="sap.ui.core.mvc">
+
+
+    <VBox>
+        <Image
+                src="{/selectedImage}"
+                densityAware="false"
+                width="25em" />
+
+        <Button text="{i18n>choose}" press="onChoosePress"/>
+    </VBox>
 
 </mvc:View>
