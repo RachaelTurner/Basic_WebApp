@@ -11,18 +11,6 @@ sap.ui.define([
             this.getView().setModel(this.viewModel);
             this.viewData = {
                 images: [
-                    {
-                        imageName: "Hello World",
-                        imagePath:"https://i.ytimg.com/vi/zecueq-mo4M/maxresdefault.jpg"
-                    },
-                    {
-                        imageName: "Hello World",
-                        imagePath: "http://www.amir.ninja/content/images/2015/12/Hello-World.png"
-                    },
-                    {
-                        imageName: "Hello World",
-                        imagePath: "https://i.ytimg.com/vi/C2O7lM0bU0g/maxresdefault.jpg"
-                    }
                 ],
                 okEnabled: false,
                 selectedImage: ""
@@ -38,8 +26,9 @@ sap.ui.define([
             this.viewModel.setProperty("/selectedImage", itemPathInModel);
             this.viewModel.setProperty("/okEnabled",true);
         },
-        showDialog: function (shellController) {
+        showDialog: function (shellController, images) {
             this.shellController = shellController;
+            this.processImages(images);
             this.dialog.open();
         },
         onCancelPress: function () {
@@ -51,6 +40,14 @@ sap.ui.define([
             var selectedImageURL = selectedImage.imagePath;
             this.shellController.setSelectedImage(selectedImageURL);
             this.dialog.close();
+        },
+        processImages: function (images) {
+            var imagesArray = [];
+            for(var i = 0; i < images.length; i++){
+                var imageName = images[i];
+                imagesArray.push({imageName: imageName, imagePath: "../Images/" + imageName});
+            }
+            this.viewModel.setProperty("/images", imagesArray);
         }
     });
 });
