@@ -1,7 +1,8 @@
 <mvc:View
         controllerName="com.rach.controller.shell"
         xmlns="sap.m"
-        xmlns:mvc="sap.ui.core.mvc">
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns:u="sap.ui.unified">
 
 
     <VBox>
@@ -11,6 +12,18 @@
                 width="25em" />
 
         <Button text="{i18n>choose}" press="onChoosePress"/>
+
+        <u:FileUploader
+                id="fileUploader"
+                name="myFileUpload"
+                uploadUrl="/api/rach/v1/image"
+                width="400px"
+                tooltip="Upload your file to the local server"
+                uploadComplete="handleUploadComplete"/>
+
+        <Button
+                text="Upload File"
+                press="handleUploadPress"/>
     </VBox>
 
 </mvc:View>
